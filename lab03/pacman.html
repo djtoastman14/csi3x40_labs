@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Pacman</title>
+    </head>
+    <script type="text/javascript">
+        function createGame(gameSize) {
+            const pacman = "C";
+            const ghost = "^";
+            const fruit = "@";
+            const pellet = ".";
+            var board = [];
+
+            //gives them random posistions while making sure they dont overlap
+            var pacmanPos, fruitPos, ghostPos = 0;
+            while (pacmanPos == fruitPos || fruitPos == ghostPos || pacmanPos == ghostPos) {
+                var pacmanPos = Math.floor(0 + Math.random() * gameSize);
+                var fruitPos = Math.floor(0 + Math.random() * gameSize);
+                var ghostPos = Math.floor(0 + Math.random() * gameSize);
+            }
+            
+            for (var i=0, len = gameSize; i < len; i++) {
+                var tile = "";
+                if (i == pacmanPos) {
+                    tile += pacman;}
+                else {
+                    tile += pellet;}
+                //to allow pellets on the same tile as these
+                if (i == fruitPos) {
+                    tile += fruit;}
+                if (i == ghostPos) {
+                    tile += ghost;}
+                board.push(tile);
+            }
+            
+            var output = "Array "+ name +" ["+ board.length+"] is [";
+            for (var i=0, len = board.length; i < len; i++) {
+                output += board[i] + " | ";
+            }
+            output += "]<br>";
+            document.writeln(output);
+        }
+    </script>
+</html>
